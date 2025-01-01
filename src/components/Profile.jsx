@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const Profile = () => {
   return (
-    <div className="border-b border-neutral-100 pb-4 lg:mb-35">
+    <div className="border-b border-neutral-900 pb-4 lg:mb-35">
       <div className="flex flex-wrap">
         <motion.div
           className="w-full lg:w-1/2"

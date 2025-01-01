@@ -5,7 +5,7 @@ import { ABOUT_TEXT } from "../constants";
 
 const About = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false });
+  const isInView = useInView(ref, { once: true });
 
   return (
     <motion.div

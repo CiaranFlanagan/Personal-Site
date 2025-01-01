@@ -4,7 +4,7 @@ import { useRef } from "react";
 
 const Contact = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false });
+  const isInView = useInView(ref, { once: true });
 
   return (
     <motion.div

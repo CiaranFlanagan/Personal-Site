@@ -4,7 +4,7 @@ import { useRef } from "react";
 
 const Experience = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false });
+  const isInView = useInView(ref, { once: true });
 
   return (
     <motion.div

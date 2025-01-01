@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const BackToTopButton = () => {
   const [backToTopButton, setBackToTopButton] = useState(false);
@@ -29,7 +30,7 @@ const BackToTopButton = () => {
   return (
     <>
       {backToTopButton && (
-        <button
+        <motion.button
           onClick={scrollToTop}
           style={{
             position: "fixed",
@@ -39,14 +40,18 @@ const BackToTopButton = () => {
             fontSize: "16px",
             backgroundColor: "#000",
             color: "#fff",
-            border: "2px solid red", // Added border for visibility
+            border: "2px solid white",
             borderRadius: "5px",
             cursor: "pointer",
-            zIndex: 1000, // Ensure it is above other content
+            zIndex: 1000,
           }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.3 }}
+          whileHover={{ scale: 1.1 }}
         >
           Back to Top
-        </button>
+        </motion.button>
       )}
     </>
   );
