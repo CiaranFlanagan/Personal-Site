@@ -1,12 +1,29 @@
 import { PROJECTS } from "../constants";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const Projects = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false });
+
   return (
-    <div className="border-b border-neutral-900 pb-4">
+    <motion.div
+      className="border-b border-neutral-900 pb-4"
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5 }}
+      ref={ref}
+    >
       <h2 className="my-20 text-center text-4xl">Projects</h2>
       <div>
         {PROJECTS.map((project, index) => (
-          <div key={index} className="mb-8 flex flex-wrap lg:justify-center">
+          <motion.div
+            key={index}
+            className="mb-8 flex flex-wrap lg:justify-center"
+            initial={{ opacity: 0, y: 50 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: index * 0.2 }}
+          >
             <div className="w-full max-w-xl lg:w-3/4">
               <h6 className="mb-2 font-semibold">{project.title}</h6>
               <p className="mb-4 text-neutral-400">{project.description}</p>
@@ -21,10 +38,10 @@ const Projects = () => {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
