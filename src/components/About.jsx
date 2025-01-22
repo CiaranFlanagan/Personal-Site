@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import aboutImg from "../assets/lebronald.jpeg";
+import aboutImg from "../assets/about.jpg";
 import { ABOUT_TEXT } from "../constants";
 
 const About = () => {
@@ -15,9 +15,10 @@ const About = () => {
       transition={{ duration: 0.5 }}
       ref={ref}
     >
+      <div className="fixed top-0 -z-10 w-full min-h-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
       <h2 className="my-20 text-center text-4xl">
         About
-        <span className="text-neutral-500"> Me</span>
+        <span className="text-galwayMaroon-700"> Me</span>
       </h2>
 
       <div className="flex flex-wrap">
