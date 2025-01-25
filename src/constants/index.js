@@ -8,30 +8,37 @@ Outside of academics, I am passionate about Boston sports and enjoy playing Gael
 
 export const EXPERIENCES = [
   {
-    year: "2024 - Present",
-    role: "Teaching Assistant",
+    year: "Aug 2024 – Present",
+    role: "Teaching Assistant - Fundamentals of Computer Science I",
     company: "Northeastern University",
-    description: `I facilitated lab sessions for 50+ students, teaching functional programming in Racket. I conducted office hours, graded assignments for 500+ students, and clarified complex concepts to improve student outcomes.`,
+    location: "Boston, MA",
+    description: `Led lab sessions for 50+ students, focusing on functional programming with Racket. Hosted office hours for 10-20 students and graded assignments and exams for 500+ students.`,
     technologies: [
       "Racket",
       "Functional Programming",
       "Recursion",
       "Higher-order Functions",
+      "Data Abstraction",
+      "Algorithmic Techniques",
     ],
   },
   {
-    year: "2024 - Present",
+    year: "May 2024 – Present",
     role: "Project Series Director, Executive Board Member",
     company: "Oasis",
-    description: `I directed a cohort of 128 students in web development, delivering workshops on topics like React, database integration, and deployment. I assisted in curriculum development and organized collaborative events.`,
-    technologies: ["React", "Git", "Databases", "HTML", "CSS", "JavaScript"],
-  },
-  {
-    year: "2024",
-    role: "Peer Tutor",
-    company: "Knack",
-    description: `I tutored students weekly in Chemistry and Calculus II, emphasizing core concepts, problem-solving techniques, and exam preparation strategies.`,
-    technologies: ["Chemistry", "Calculus", "Problem-solving", "Education"],
+    location: "Boston, MA",
+    description: `Managed a 128-student cohort, teaching full-stack web development and overseeing 24 project teams. Delivered workshops on front-end, back-end, and project management. Coordinated events with Northeastern University CS organizations.`,
+    technologies: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "APIs",
+      "Authentication",
+      "Database Design",
+      "Agile",
+      "Version Control",
+    ],
   },
 ];
 
@@ -39,19 +46,26 @@ export const PROJECTS = [
   {
     title: "Museo",
     image: "museo.png",
-    description: `I developed a front-end application using React and TypeScript to interact with the Met API. Users can browse and save artworks to their profiles, with responsive styling via TailwindCSS.`,
-    technologies: ["React", "TypeScript", "Supabase", "TailwindCSS"],
+    description: `Built and deployed an art gallery app using React and TypeScript, allowing users to browse and save artworks. Integrated the Metropolitan Museum of Art API for seamless artwork exploration and search. Used Supabase for backend services and Tailwind CSS for responsive styling, hosted on Netlify.`,
+    technologies: ["React", "TypeScript", "Supabase", "Tailwind CSS"],
   },
   {
     title: "Three Trios",
     image: "three-trios.png",
-    description: `I built a two-player card game using Java and Java Swing, leveraging functional programming principles such as streams and lambdas. The GUI enhances user engagement with interactive visual elements.`,
-    technologies: [
-      "Java",
-      "Java Swing",
-      "Functional Programming",
-      "GUI Design",
-    ],
+    description: `Designed a two-player card game in Java, emphasizing OOP principles like encapsulation and modularity. Streamlined game logic with Java streams and lambdas for concise and reusable functionality. Built an interactive GUI with Java Swing to deliver an engaging and scalable user experience.`,
+    technologies: ["Java", "Java Swing"],
+  },
+  {
+    title: "CiaranFlanagan.com",
+    image: "portfolio.png",
+    description: `Created a portfolio website with React and TypeScript to showcase projects and skills. Styled with Tailwind CSS for a clean, responsive design that works across devices. Deployed on Netlify for fast, reliable hosting and easy updates.`,
+    technologies: ["React", "TypeScript", "Tailwind CSS"],
+  },
+  {
+    title: "Submerged",
+    image: "submerged.png",
+    description: `Developed a survival game where players protect a submarine from evolving fish by fending them off. Applied a genetic algorithm as a machine learning approach to create adaptive and challenging fish behavior. Utilized HTML canvas for rendering dynamic animations and interactive gameplay.`,
+    technologies: ["JavaScript", "HTML", "CSS"],
   },
 ];
 
