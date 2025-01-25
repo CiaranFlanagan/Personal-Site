@@ -1,6 +1,10 @@
-export const PROFILE_CONTENT = `I am Ciaran Flanagan, an Honors Candidate for a Bachelor of Science in Computer Science at Northeastern University. With a strong foundation in object-oriented design, web development, and data science, I have demonstrated expertise in both academic and professional settings.`;
+export const PROFILE_CONTENT = `  Computer Science student at Northeastern University with experience in software engineering, leadership, and project management.`;
 
-export const ABOUT_TEXT = `I am a passionate computer science student with a major GPA of 3.73. I have experience teaching, leading workshops, and building projects that span front-end and back-end development. A strong communicator and problem solver, I enjoy leveraging my skills to empower others and build innovative solutions.`;
+export const ABOUT_TEXT = `I am a Computer Science student at Northeastern University, currently in my second year and actively seeking co-op opportunities for Fall 2025. I enjoy building innovative and impactful projects, applying my technical skills to solve real-world challenges. 
+
+I have experience working as a Teaching Assistant for Fundamentals of Computer Science, supporting students in their learning and setting them up for success in their CS journeys. Additionally, I serve as the Project Series Director for Oasis, mentoring a cohort of over 100 students through web development workshops and team-based projects. These roles have enhanced my technical expertise and my ability to lead and collaborate effectively.
+
+Outside of academics, I am passionate about Boston sports and enjoy playing Gaelic football and hurling. In my downtime, I also like skiing, exploring new ideas, and learning more about emerging technologies.`;
 
 export const EXPERIENCES = [
   {
