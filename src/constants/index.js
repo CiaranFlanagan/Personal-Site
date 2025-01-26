@@ -56,7 +56,7 @@ export const PROJECTS = [
     technologies: ["Java", "Java Swing"],
   },
   {
-    title: "CiaranFlanagan.com",
+    title: "CiaranFlanagan.me",
     image: "portfolio.png",
     description: `Created a portfolio website with React and TypeScript to showcase projects and skills. Styled with Tailwind CSS for a clean, responsive design that works across devices. Deployed on Netlify for fast, reliable hosting and easy updates.`,
     technologies: ["React", "TypeScript", "Tailwind CSS"],
