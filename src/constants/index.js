@@ -85,7 +85,7 @@ export const PROJECTS = [
     title: "agenteval",
     tech: ["Python", "SQLite", "pytest"],
     description:
-      "Tracing and regression evaluation for LLM agents. Records tool calls, tokens, latency, and cost per run, then compares two versions and flags what changed. 96% test coverage across 30 tests.",
+      "Tracing and regression evaluation for LLM agents. Records tool calls, tokens, latency, and cost per run, then compares two versions and flags what changed, including the metrics nobody was watching.",
     href: "https://github.com/CiaranFlanagan/agenteval",
   },
 ];
