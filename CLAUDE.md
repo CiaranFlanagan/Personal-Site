@@ -34,6 +34,10 @@ These are the ones that took several rounds to get right. They matter more than 
 
 All copy lives in `src/constants/index.js`. Nothing user-facing is hardcoded in components.
 
+A copy string can carry a link as `[text](url)`. `withLinks()` in `src/copy.jsx` renders it; `plain()` flattens it for anywhere that needs a real string, which is alt text, `aria-label`, and the lightbox dialog label. If you add a link to a caption, use `photo.alt` for those, not `photo.caption`.
+
+**OASIS is linked in every place it is mentioned**: the About paragraph, the Work entry, the workshop photo's caption, and the résumé. `OASIS_URL` is a single constant so they cannot drift.
+
 ## Photos
 
 **The album is the source of truth, not the folder.** To add a photo, put it in the `website photos` album in Photos.app and run `npm run import:photos`. The script exports the album, reads each photo's own GPS and date, sorts it into a place group, resizes it, and regenerates `src/photoMeta.js`. It rebuilds the group folders from scratch, so removing a photo from the album removes it from the site. It is deterministic: two runs produce byte-identical files.
@@ -70,6 +74,8 @@ The folder is still the group at render time, and dropping a file in by hand wor
 - **The wall is balanced columns computed from known aspect ratios**, not a plain grid and not CSS columns. A grid left ragged gaps under the short photos; CSS columns stranded the last photo of a short set. Heights come from `photoMeta`, so there is no measure-then-reflow.
 - **The lightbox steps through the visible set, not every photo.** Filter to Sicily, open one, and the arrows stay in Sicily.
 - **The maroon is Galway's and the footer says so once.** Otherwise it is just a colour. It is deliberately not louder than that.
+- **The résumé is in the sticky nav from `sm` up, and in the footer.** It is the most likely thing the audience wants and it used to leave the screen on the first scroll. Below `sm` the section anchors keep the space, because the page is 5,000px long and losing the anchors hurts more than losing one duplicate link.
+- **Side projects are full-width rows with the repo path visible.** They carry the engineering claims the résumé leads on and were the faintest thing on the page.
 
 ## Deploying
 
