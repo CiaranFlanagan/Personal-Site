@@ -1,56 +1,40 @@
+import Section from "./Section";
 import { EXPERIENCES } from "../constants";
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 
-const Experience = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+const Experience = () => (
+  <Section id="work" title="Work">
+    <div className="space-y-9">
+      {EXPERIENCES.map((exp) => (
+        <div
+          key={`${exp.company}-${exp.range}`}
+          className="grid gap-2 md:grid-cols-[11rem_1fr] md:gap-8"
+        >
+          <p className="text-sm text-ink/50">{exp.range}</p>
 
-  return (
-    <motion.div
-      className="border-b border-neutral-900 pb-4"
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5 }}
-      ref={ref}
-    >
-      <h1 className="my-20 text-center text-4xl">Experience</h1>
-      <div>
-        {EXPERIENCES.map((experience, index) => (
-          <motion.div
-            key={index}
-            className="mb-8 flex flex-wrap lg:justify-center"
-            initial={{ opacity: 0, y: 50 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
-          >
-            <div className="w-full lg:w-1/4">
-              <p className="mb-2 text-sm text-neutral-400">{experience.year}</p>
-            </div>
-            <div className="w-full max-w-xl lg:w-3/4">
-              <h6 className="mb-2 font-semibold">
-                {experience.role} -{" "}
-                <span className="text-sm text-purple-100">
-                  {experience.company}
-                </span>
-              </h6>
-              <p className="mb-4 text-neutral-400">{experience.description}</p>
-              <div>
-                {experience.technologies.map((tech, index) => (
-                  <span
-                    key={index}
-                    className="mr-2 mt-4 rounded bg-neutral-900 px-2 py-1 text-sm font-medium text-galwayMaroon-700"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </motion.div>
-  );
-};
+          <div className="max-w-2xl">
+            <h3 className="font-medium">
+              {exp.role}
+              {" at "}
+              {exp.href ? (
+                <a
+                  href={exp.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-maroon-700 underline decoration-maroon-700/30 underline-offset-2 hover:decoration-maroon-700"
+                >
+                  {exp.company}
+                </a>
+              ) : (
+                <span className="text-ink/70">{exp.company}</span>
+              )}
+            </h3>
+            <p className="mt-2 leading-relaxed text-ink/70">{exp.description}</p>
+            <p className="mt-2 text-sm text-ink/45">{exp.technologies.join(", ")}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </Section>
+);
 
 export default Experience;

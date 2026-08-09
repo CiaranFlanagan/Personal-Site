@@ -1,33 +1,36 @@
-@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Open+Sans:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --font-heading: "Fredoka One", cursive;
-  --font-body: "Open Sans", sans-serif;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: var(--font-body);
-  overflow: auto; /* Ensure scrolling is enabled */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;  /* IE and Edge */
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  background-color: theme("colors.paper");
+  color: theme("colors.ink");
 }
 
-body::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+/* Snapshot look: white border and a soft drop shadow, like a printed photo. */
+.snapshot {
+  background: #fff;
+  padding: 0.5rem;
+  border-radius: 2px;
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 0.08),
+    0 8px 24px rgb(0 0 0 / 0.08);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-heading);
-}
-
-a {
-  font-family: var(--font-body);
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

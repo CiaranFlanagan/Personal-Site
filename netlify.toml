@@ -1,0 +1,22 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[build.environment]
+  # Pinned so a change to Netlify's default image can't break the build.
+  # Vite 6 requires Node 18+.
+  NODE_VERSION = "20"
+
+# Hashed asset filenames change on every build, so they are safe to cache hard.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    cache-control = "public, max-age=31536000, immutable"
+
+# The résumé is overwritten in place at the same URL, so it must not be cached
+# hard or people keep getting the old PDF.
+[[headers]]
+  for = "/resume.pdf"
+  [headers.values]
+    cache-control = "public, max-age=0, must-revalidate"
