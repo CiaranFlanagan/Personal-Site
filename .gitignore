@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Cached Natural Earth download used by scripts/gen-map.py
+scripts/.ne_110m_land.geojson

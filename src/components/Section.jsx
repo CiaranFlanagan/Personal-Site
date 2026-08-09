@@ -10,7 +10,7 @@ const Section = ({ id, title, tinted = false, children }) => (
     id={id}
     className={
       tinted
-        ? "-mx-4 my-4 rounded-2xl bg-sand/60 px-4 py-14 sm:-mx-6 sm:px-6 md:py-16"
+        ? "-mx-4 my-4 rounded-2xl bg-maroon-100/30 px-4 py-14 sm:-mx-6 sm:px-6 md:py-16"
         : "border-t border-ink/10 py-14 md:py-16"
     }
   >

@@ -8,7 +8,9 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "build:resume": "bash scripts/build-web-resume.sh"
+    "build:resume": "bash scripts/build-web-resume.sh",
+    "import:photos": "python3 scripts/import-photos.py",
+    "gen:map": "python3 scripts/gen-map.py"
   },
   "dependencies": {
     "motion": "^11.15.0",

@@ -1,20 +1,25 @@
 import { useEffect, useCallback, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PropTypes from "prop-types";
-import { allPhotos } from "../photos";
 
-/** Full-screen photo viewer. `index` is null when closed. */
-const Lightbox = ({ index, onClose, onIndexChange }) => {
-  const open = index !== null;
+/*
+ * Full-screen photo viewer. `index` is null when closed.
+ *
+ * It steps through whatever set the wall is currently showing, not every photo
+ * on the site: filter to Sicily, open one, and the arrows should stay in
+ * Sicily rather than wandering off to Arkansas.
+ */
+const Lightbox = ({ photos, index, onClose, onIndexChange }) => {
+  const open = index !== null && photos.length > 0;
   // Which way the next photo should slide in from.
   const [direction, setDirection] = useState(0);
 
   const step = useCallback(
     (delta) => {
       setDirection(delta);
-      onIndexChange((index + delta + allPhotos.length) % allPhotos.length);
+      onIndexChange((index + delta + photos.length) % photos.length);
     },
-    [index, onIndexChange],
+    [index, onIndexChange, photos.length],
   );
 
   useEffect(() => {
@@ -36,7 +41,7 @@ const Lightbox = ({ index, onClose, onIndexChange }) => {
     };
   }, [open, onClose, step]);
 
-  const photo = open ? allPhotos[index] : null;
+  const photo = open ? photos[index] : null;
 
   return (
     <AnimatePresence>
@@ -60,7 +65,7 @@ const Lightbox = ({ index, onClose, onIndexChange }) => {
             ×
           </button>
 
-          {allPhotos.length > 1 && (
+          {photos.length > 1 && (
             <>
               <button
                 onClick={(e) => {
@@ -114,7 +119,7 @@ const Lightbox = ({ index, onClose, onIndexChange }) => {
           <div className="mt-4 flex min-h-[1.5rem] items-center gap-3 text-sm text-paper/70">
             {photo.caption && <span className="max-w-xl text-center">{photo.caption}</span>}
             <span className="text-paper/35">
-              {index + 1} / {allPhotos.length}
+              {index + 1} / {photos.length}
             </span>
           </div>
         </motion.div>
@@ -124,6 +129,7 @@ const Lightbox = ({ index, onClose, onIndexChange }) => {
 };
 
 Lightbox.propTypes = {
+  photos: PropTypes.array.isRequired,
   index: PropTypes.number,
   onClose: PropTypes.func.isRequired,
   onIndexChange: PropTypes.func.isRequired,

@@ -23,7 +23,11 @@ const Hero = () => {
         <h1 className="text-4xl font-semibold tracking-tight md:text-[3.25rem] md:leading-[1.05]">
           {HERO.greeting}
         </h1>
-        <p className="mt-6 max-w-md text-lg leading-relaxed text-ink/75">
+        {/* People have to say it out loud on a call, so just tell them. */}
+        <p className="mt-3 text-sm tracking-wide text-ink/40">
+          {HERO.pronunciation}
+        </p>
+        <p className="mt-5 max-w-md text-lg leading-relaxed text-ink/75">
           {HERO.intro}
         </p>
 

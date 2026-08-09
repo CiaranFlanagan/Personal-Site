@@ -1,15 +1,21 @@
 import { PHOTO_CAPTIONS, GROUP_LABELS, GROUP_ORDER } from "./constants";
+import { PHOTO_META } from "./photoMeta";
 
 /*
  * Adding a photo:
  *   drop the file into src/assets/photos/<group>/  and it appears on the site.
  *
  * The folder name is the group. A new folder becomes a new group automatically;
- * give it a nicer display name in GROUP_LABELS and a position in GROUP_ORDER if
- * you care about either. Captions are optional, keyed by "<group>/<file>".
+ * give it a nicer display name in GROUP_LABELS, a position in GROUP_ORDER, and
+ * a dot in MAP_POINTS if you want it on the map. A group with no map point
+ * still shows up in the place list, it just is not plotted.
+ *
+ * Place and date come from photoMeta.js, which is generated from the photos'
+ * own metadata. That is why almost nothing here needs a hand-written caption:
+ * "Cobh, Co. Cork, May 2026" is a fact the file already knew.
  *
  * headshot.jpg sits at the top level, outside any group. It is the fixed front
- * photo and is never shuffled away.
+ * photo of the hero pile and is never shuffled away.
  */
 const modules = import.meta.glob("./assets/photos/**/*.{jpg,jpeg,png,webp}", {
   eager: true,
@@ -25,10 +31,18 @@ const entries = Object.entries(modules).map(([path, src]) => {
   const file = parts.pop();
   const group = parts.length ? parts.join("/") : null;
   const key = group ? `${group}/${file}` : file;
-  return { file, group, key, src, caption: PHOTO_CAPTIONS[key] };
+  const meta = PHOTO_META[key] || {};
+  // A hand-written caption wins; otherwise state where and when.
+  const caption =
+    PHOTO_CAPTIONS[key] ||
+    [meta.place, meta.when].filter(Boolean).join(", ") ||
+    undefined;
+  return { file, group, key, src, caption, place: meta.place, date: meta.date };
 });
 
-export const headshot = entries.find((e) => e.group === null && /^headshot\./.test(e.file));
+export const headshot = entries.find(
+  (e) => e.group === null && /^headshot\./.test(e.file),
+);
 
 const grouped = entries.filter((e) => e.group !== null);
 
@@ -42,25 +56,30 @@ const slugs = [...new Set(grouped.map((e) => e.group))].sort((a, b) => {
   return ia - ib;
 });
 
-// Flat list backing the lightbox. The headshot is index 0 so it is always
-// reachable first.
-export const allPhotos = [];
-if (headshot) allPhotos.push(headshot);
-
 export const groups = slugs.map((slug) => {
   const photos = grouped
     .filter((e) => e.group === slug)
-    .sort((a, b) => a.file.localeCompare(b.file))
-    .map((photo) => {
-      const withIndex = { ...photo, index: allPhotos.length };
-      allPhotos.push(withIndex);
-      return withIndex;
-    });
-
+    .sort((a, b) => (a.date || "").localeCompare(b.date || "") || a.file.localeCompare(b.file));
   return { slug, label: GROUP_LABELS[slug] || titleCase(slug), photos };
 });
 
-if (headshot) headshot.index = 0;
+/** Every grouped photo, oldest first. The wall's default view reads as a timeline. */
+export const chronological = groups
+  .flatMap((g) => g.photos)
+  .sort((a, b) => (a.date || "").localeCompare(b.date || ""));
+
+export const totalPhotos = chronological.length;
+
+/**
+ * An even spread across the whole set rather than a random handful, so the
+ * default view shows several different places instead of clumping on whichever
+ * trip happened to have the most photos.
+ */
+export function spread(list, count) {
+  if (list.length <= count) return list;
+  const step = list.length / count;
+  return Array.from({ length: count }, (_, i) => list[Math.floor(i * step)]);
+}
 
 /** One random photo from each of up to `count` groups, reshuffled per page load. */
 export function sampleAcrossGroups(count = 3) {

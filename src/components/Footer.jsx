@@ -1,5 +1,5 @@
 import NowPlaying from "./NowPlaying";
-import { CONTACT } from "../constants";
+import { CONTACT, FOOTER_NOTE } from "../constants";
 
 const Footer = () => (
   <footer className="space-y-4 border-t border-ink/10 py-10">
@@ -13,6 +13,8 @@ const Footer = () => (
       </a>
       <p>Boston, MA</p>
     </div>
+    {/* Otherwise the colour is just a colour. */}
+    <p className="text-sm text-ink/40">{FOOTER_NOTE}</p>
   </footer>
 );
 

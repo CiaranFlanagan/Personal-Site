@@ -1,12 +1,14 @@
 export const NAV_LINKS = [
   { label: "About", id: "about" },
+  { label: "Photos", id: "photos" },
   { label: "Work", id: "work" },
   { label: "Projects", id: "projects" },
-  { label: "Photos", id: "photos" },
 ];
 
 export const HERO = {
   greeting: "Hi, I'm Ciarán.",
+  // Shown next to the name. People have to say it out loud on calls.
+  pronunciation: "(KEER-awn)",
   intro:
     "I'm a CS and Biology student at Northeastern, from Watertown, Massachusetts.",
 };
@@ -94,24 +96,56 @@ export const PROJECTS = [
    These two maps only control display: a new folder works without touching
    either, it just gets a title-cased name and sorts to the end. */
 export const GROUP_LABELS = {
+  massachusetts: "Massachusetts",
   ireland: "Ireland",
   sicily: "Sicily",
+  "costa-rica": "Costa Rica",
   arkansas: "Arkansas",
-  teaching: "Teaching",
+  "new-york": "New York",
+  southwest: "Utah & Arizona",
 };
 
-export const GROUP_ORDER = ["ireland", "teaching", "arkansas", "sicily"];
+export const GROUP_ORDER = [
+  "massachusetts",
+  "ireland",
+  "sicily",
+  "costa-rica",
+  "arkansas",
+  "new-york",
+  "southwest",
+];
 
-/* Captions are optional, keyed by "<folder>/<filename>".
-   Photos without one still show up, just uncaptioned. */
+/* Where each group's dot sits on the map, in the viewBox units of
+   worldPaths.js. These come out of scripts/gen-map; rerun it if the projection
+   window changes. Points are the city, not the address: a couple of these
+   photos were taken at home and a public site should not draw a ring round
+   anyone's house.
+
+   Labels are placed by hand because Boston and New York land close enough
+   together to collide. */
+export const MAP_POINTS = {
+  massachusetts: { x: 352.5, y: 155.5, dx: 14, dy: 5, anchor: "start" },
+  "new-york": { x: 333.5, y: 169.5, dx: -14, dy: 10, anchor: "end" },
+  arkansas: { x: 205.2, y: 210.0, dx: 0, dy: 28, anchor: "middle" },
+  southwest: { x: 86.3, y: 199.4, dx: 0, dy: 28, anchor: "middle" },
+  "costa-rica": { x: 264.7, y: 394.6, dx: 0, dy: -20, anchor: "middle" },
+  ireland: { x: 760.8, y: 56.0, dx: 0, dy: -20, anchor: "middle" },
+  sicily: { x: 914.4, y: 196.1, dx: -14, dy: 5, anchor: "end" },
+};
+
+/* Captions are optional, keyed by "<folder>/<filename>". Anything without one
+   falls back to the place and month from the photo's own metadata, which is a
+   fact rather than a description. Only write one here when the file itself
+   cannot say what the picture is. */
 export const PHOTO_CAPTIONS = {
-  "teaching/oasis-workshop.jpg": "Running a React workshop for OASIS.",
-  "ireland/cobh.jpg": "Cobh, Co. Cork.",
-  "sicily/etna.jpg": "Above the clouds on Etna.",
-  "sicily/taormina.jpg": "Taormina, Sicily.",
-  "sicily/cefalu.jpg": "Cefalù, Sicily.",
-  "arkansas/hawksbill-crag.jpg": "Hawksbill Crag, Arkansas.",
+  "massachusetts/oasis-workshop.jpg": "Running a React workshop for OASIS.",
+  "massachusetts/galway-boston-01.jpg":
+    "Galway Boston, Junior B champions, 2022.",
 };
+
+export const PHOTOS_INTRO = "Places I have taken a photo. Click one.";
+
+export const FOOTER_NOTE = "The maroon is Galway’s.";
 
 export const CONTACT = {
   email: "flanagan.ci@northeastern.edu",

@@ -36,7 +36,7 @@ const PhotoPile = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="relative aspect-square w-full max-w-[15rem] sm:max-w-[17rem] md:max-w-[19rem]">
+      <div className="relative aspect-square w-full max-w-[16rem] sm:max-w-[19rem] md:max-w-[22rem]">
         {pile.map((photo, pileIndex) => {
           const depth = order.indexOf(pileIndex);
           const pos = DEPTHS[Math.min(depth, DEPTHS.length - 1)];
