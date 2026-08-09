@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { headshot, sampleAcrossGroups } from "../photos";
+import { withLinks } from "../copy";
 
 /*
  * A pile of prints you flip through. The headshot starts on top; after that it
@@ -62,7 +63,7 @@ const PhotoPile = () => {
               <div className="h-full w-full overflow-hidden bg-sand">
                 <img
                   src={photo.src}
-                  alt={isFront ? photo.caption || "" : ""}
+                  alt={isFront ? photo.alt || "" : ""}
                   className="h-full w-full object-cover"
                   draggable="false"
                 />
@@ -72,7 +73,9 @@ const PhotoPile = () => {
         })}
       </div>
 
-      <p className="mt-9 min-h-[1.25rem] text-sm text-ink/55">{front.caption}</p>
+      <p className="mt-9 min-h-[1.25rem] text-sm text-ink/55">
+        {withLinks(front.caption)}
+      </p>
     </div>
   );
 };

@@ -1,13 +1,6 @@
 import { motion } from "framer-motion";
 import PhotoPile from "./PhotoPile";
-import { HERO, CONTACT } from "../constants";
-
-const LINKS = [
-  { label: "Email", href: `mailto:${CONTACT.email}` },
-  { label: "GitHub", href: CONTACT.github },
-  { label: "LinkedIn", href: CONTACT.linkedin },
-  { label: "Résumé", href: CONTACT.resume },
-];
+import { HERO, PROFILE_LINKS as LINKS } from "../constants";
 
 const Hero = () => {
   return (

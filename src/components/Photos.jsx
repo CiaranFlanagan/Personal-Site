@@ -56,11 +56,11 @@ const Photo = forwardRef(function Photo({ photo, tilt, onOpen }, ref) {
       whileHover={{ rotate: 0, scale: 1.03, y: -4, zIndex: 10 }}
       transition={{ type: "spring", stiffness: 280, damping: 26 }}
       className="snapshot block w-full cursor-zoom-in focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-maroon-700 focus-visible:ring-offset-2"
-      aria-label={photo.caption ? `Open photo: ${photo.caption}` : "Open photo"}
+      aria-label={photo.alt ? `Open photo: ${photo.alt}` : "Open photo"}
     >
       <img
         src={photo.src}
-        alt={photo.caption || ""}
+        alt={photo.alt || ""}
         width={photo.w}
         height={photo.h}
         loading="lazy"

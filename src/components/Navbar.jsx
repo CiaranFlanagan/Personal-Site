@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NAV_LINKS } from "../constants";
+import { NAV_LINKS, CONTACT } from "../constants";
 
 const Navbar = () => {
   const [active, setActive] = useState(null);
@@ -61,6 +61,19 @@ const Navbar = () => {
               </a>
             </li>
           ))}
+          {/* The most likely thing a recruiter wants, and it was otherwise only
+              reachable from the hero. Held back until sm, where there is room
+              for it alongside the anchors without crowding them out. */}
+          <li className="hidden sm:block">
+            <a
+              href={CONTACT.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-ink/15 px-3 py-1 transition-colors hover:border-maroon-700 hover:bg-maroon-700 hover:text-paper"
+            >
+              Résumé
+            </a>
+          </li>
         </ul>
       </div>
     </nav>

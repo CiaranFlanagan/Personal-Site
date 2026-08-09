@@ -1,6 +1,7 @@
 import { useEffect, useCallback, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PropTypes from "prop-types";
+import { withLinks } from "../copy";
 
 /*
  * Full-screen photo viewer. `index` is null when closed.
@@ -55,7 +56,7 @@ const Lightbox = ({ photos, index, onClose, onIndexChange }) => {
           onClick={onClose}
           role="dialog"
           aria-modal="true"
-          aria-label={photo.caption || "Photo"}
+          aria-label={photo.alt || "Photo"}
         >
           <button
             onClick={onClose}
@@ -95,7 +96,7 @@ const Lightbox = ({ photos, index, onClose, onIndexChange }) => {
               <motion.img
                 key={photo.src}
                 src={photo.src}
-                alt={photo.caption || ""}
+                alt={photo.alt || ""}
                 className="max-h-[82vh] max-w-full rounded-sm object-contain"
                 custom={direction}
                 initial={(d) => ({ opacity: 0, x: d > 0 ? 60 : d < 0 ? -60 : 0, scale: 0.98 })}
@@ -116,8 +117,13 @@ const Lightbox = ({ photos, index, onClose, onIndexChange }) => {
             </AnimatePresence>
           </div>
 
-          <div className="mt-4 flex min-h-[1.5rem] items-center gap-3 text-sm text-paper/70">
-            {photo.caption && <span className="max-w-xl text-center">{photo.caption}</span>}
+          <div
+            className="mt-4 flex min-h-[1.5rem] items-center gap-3 text-sm text-paper/70"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {photo.caption && (
+              <span className="max-w-xl text-center">{withLinks(photo.caption)}</span>
+            )}
             <span className="text-paper/35">
               {index + 1} / {photos.length}
             </span>

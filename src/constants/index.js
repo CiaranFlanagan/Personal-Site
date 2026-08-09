@@ -1,3 +1,7 @@
+/* Linked from several places: the Work entry, the About paragraph, and a photo
+   caption. One constant so they cannot drift apart. */
+export const OASIS_URL = "https://oasisneu.com/";
+
 export const NAV_LINKS = [
   { label: "About", id: "about" },
   { label: "Photos", id: "photos" },
@@ -17,7 +21,7 @@ export const ABOUT_PARAGRAPHS = [
   "I like programming. Designing things, and working out how to put them together.",
   "I added Biology more recently. I've always thought life was interesting: how detailed it is, and how exactly right it has to be to work at all. So far I've taken genetics, organic chemistry, and comparative vertebrate anatomy.",
   "Both my parents are from Ireland, so most of my family is still over there and I visit often. I grew up in Watertown playing hurling and Gaelic football, went to Catholic Memorial, and now play for Galway Boston GAA. Liverpool, Celtics, Patriots.",
-  "I've been a TA for four semesters and ran OASIS. I like teaching and working with people.",
+  `I've been a TA for four semesters and ran [OASIS](${OASIS_URL}). I like teaching and working with people.`,
 ];
 
 export const SKILLS = [
@@ -68,7 +72,7 @@ export const EXPERIENCES = [
     role: "Executive Board President",
     company: "OASIS",
     location: "Boston, MA",
-    href: "https://oasisneu.com/",
+    href: OASIS_URL,
     description:
       "Led a 120-student cohort and matched mentors to 25 teams building full-stack applications. Wrote the curriculum on React, Node.js, PostgreSQL, and API design, and ran eight workshops.",
     technologies: ["React", "Node.js", "PostgreSQL"],
@@ -138,7 +142,7 @@ export const MAP_POINTS = {
    fact rather than a description. Only write one here when the file itself
    cannot say what the picture is. */
 export const PHOTO_CAPTIONS = {
-  "massachusetts/oasis-workshop.jpg": "Running a React workshop for OASIS.",
+  "massachusetts/oasis-workshop.jpg": `Running a React workshop for [OASIS](${OASIS_URL}).`,
   "massachusetts/galway-boston-01.jpg":
     "Galway Boston, Junior B champions, 2022.",
 };
@@ -153,3 +157,11 @@ export const CONTACT = {
   linkedin: "https://www.linkedin.com/in/ciaranflanagan1/",
   resume: "/resume.pdf",
 };
+
+/* The same four links appear in the hero and again in the footer. */
+export const PROFILE_LINKS = [
+  { label: "Email", href: `mailto:${CONTACT.email}` },
+  { label: "GitHub", href: CONTACT.github },
+  { label: "LinkedIn", href: CONTACT.linkedin },
+  { label: "Résumé", href: CONTACT.resume },
+];

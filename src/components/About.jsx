@@ -1,5 +1,6 @@
 import Section from "./Section";
 import { ABOUT_PARAGRAPHS, SKILLS } from "../constants";
+import { withLinks } from "../copy";
 
 const About = () => (
   <Section id="about" title="About">
@@ -7,7 +8,7 @@ const About = () => (
       <div className="max-w-xl space-y-4">
         {ABOUT_PARAGRAPHS.map((p, i) => (
           <p key={i} className="leading-relaxed text-ink/80">
-            {p}
+            {withLinks(p)}
           </p>
         ))}
       </div>

@@ -1,5 +1,6 @@
 import { PHOTO_CAPTIONS, GROUP_LABELS, GROUP_ORDER } from "./constants";
 import { PHOTO_META } from "./photoMeta";
+import { plain } from "./copy";
 
 /*
  * Adding a photo:
@@ -37,7 +38,12 @@ const entries = Object.entries(modules).map(([path, src]) => {
     PHOTO_CAPTIONS[key] ||
     [meta.place, meta.when].filter(Boolean).join(", ") ||
     undefined;
-  return { file, group, key, src, caption, place: meta.place, date: meta.date };
+  // `caption` may contain [text](url); `alt` is the same thing flattened, for
+  // places that need a real string.
+  return {
+    file, group, key, src, caption, alt: plain(caption),
+    place: meta.place, date: meta.date,
+  };
 });
 
 export const headshot = entries.find(
